@@ -1,0 +1,45 @@
+/*Problem 7. Calculate N! / (K! * (N-K)!)
+
+    In combinatorics, the number of ways to choose k different members out of a group of n different elements (also known as the number of combinations) is calculated by the following formula: formula For example, there are 2598960 ways to withdraw 5 cards out of a standard deck of 52 cards.
+    Your task is to write a program that calculates n! / (k! * (n-k)!) for given n and k (1 < k < n < 100). Try to use only two loops.
+*/
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Write a number 'k' in the range (1 < k < n < 100)");
+        double k = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Write a number 'n' in the range (1 < k < n < 100)");
+        double n = double.Parse(Console.ReadLine());
+
+        double faktorialK = 1;
+        double faktorialN = 1;
+        double faktorialNK = 1;
+
+        if ((n <= k || n >= 100 || n <= 1) || (n == k || k >= 100 || k <= 1))
+        {
+            Console.WriteLine("invalid input! try again");
+            return;   // za da ne se printira vinagi 
+        }
+
+        for (int i = 1; i <= n; i++)
+        {
+            faktorialN *= i;       // n!
+            if (i <= k)
+            {
+                faktorialK *= i;    // k!
+            }
+        }
+
+        for (int i = 1; i <= n - k; i++)  // (n - k)!
+        {
+            faktorialNK *= i;
+        }
+        Console.WriteLine("{0}! / ({1}! * ({2} - {3})!) = {4}", n, k, n, k, faktorialN / (faktorialK * faktorialNK));
+    }
+}
+
