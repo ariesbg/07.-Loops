@@ -1,0 +1,47 @@
+/*Problem 10. Odd and Even Product
+
+    You are given n integers (given in a single line, separated by a space).
+    Write a program that checks whether the product of the odd elements is equal to the product of the even elements.
+    Elements are counted from 1 to n, so the first element is odd, the second is even, etc.
+*/
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Write 'n' integer numbers separated by a space: ");
+        string n = Console.ReadLine();
+        string[] splitted = n.Split(' ');
+
+        int productOfOdds = 1;
+        int productOfEven = 1;
+
+        for (int i = 0; i < splitted.Length; i++)
+        {
+            if (i % 2 == 0) // proverka za chetno ili nechetno
+            {
+                productOfOdds *= int.Parse(splitted[i]); // proizvedenie na nechetni
+            }
+            else
+            {
+                productOfEven *= int.Parse(splitted[i]); //proizvedenie na chetni
+            }
+        }
+
+        if (productOfEven == productOfOdds)
+        {
+            Console.WriteLine("The odd's product is equal to even's product");
+            Console.WriteLine("product = {0}", productOfEven);
+        }
+        else
+        {
+            Console.WriteLine("The odd's product is NOT equal to even's product");
+            Console.WriteLine("odd product = {0}", productOfOdds);
+            Console.WriteLine("even product = {0}", productOfEven);
+        }
+
+    }
+}
+
